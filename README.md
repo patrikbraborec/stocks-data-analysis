@@ -1,2 +1,2 @@
-# stocks-data-analysis
-A project about stocks data analysis
+# Stocks data analysis
+
