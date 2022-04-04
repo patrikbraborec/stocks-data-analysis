@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: stocks-data-analysis-database
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    env_file:
+      - docker.env
+  gooddata:
+    container_name: stocks-data-analysis-gooddata
+    image: gooddata/gooddata-cn-ce:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - /data
+    stdin_open: true
+    tty: true
+    environment:
+      - BUNDLE_TYPE=stocks-data-analysis-gooddata
+      - LICENSE_AND_PRIVACY_POLICY_ACCEPTED=YES
