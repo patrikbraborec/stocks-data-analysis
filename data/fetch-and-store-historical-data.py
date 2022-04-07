@@ -79,6 +79,9 @@ def store_data():
         values = ','.join(['%({})s'.format(k) for k in keys])
         insert = 'insert into historical_stocks ({0}) values ({1})'.format(columns, values)
         cur.execute(cur.mogrify(insert, item), item)
+    cur.close()
+
+    print("Done")
 
 
 store_data()

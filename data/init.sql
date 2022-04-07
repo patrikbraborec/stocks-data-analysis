@@ -10,4 +10,11 @@ CREATE TABLE IF NOT EXISTS historical_stocks (
     low decimal not null,
     close decimal not null,
     volume decimal not null
-)
+);
+
+CREATE TABLE IF NOT EXISTS stocks_technical_analysis (
+    id serial,
+    symbol varchar not null,
+    date date not null,
+    sma5 decimal not null
+);
