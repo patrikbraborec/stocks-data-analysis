@@ -41,8 +41,3 @@ def compute():
     frames = gp.data_frames(workspace_id)
     gtlb_indexed_df = compute_sma('gtlb_close', frames)
     store_sma(gtlb_indexed_df, 'GTLB', 'gtlb_close')
-
-    print("Done")
-
-
-compute()

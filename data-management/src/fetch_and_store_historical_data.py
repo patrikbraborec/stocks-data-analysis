@@ -4,6 +4,10 @@ import psycopg2
 import json
 
 
+def get_api_uri(stock):
+    return '/query?function=TIME_SERIES_DAILY&symbol=' + stock + '&datatype=json'
+
+
 def load_stocks_data():
     https_conn = http.client.HTTPSConnection(config('API_HTTPS_CONNECTION'))
     headers = {
@@ -16,7 +20,7 @@ def load_stocks_data():
     for stock in stocks:
         https_conn.request(
             'GET',
-            '/query?function=TIME_SERIES_DAILY&symbol=' + stock + '&datatype=json',
+            get_api_uri(stock),
             headers=headers
         )
         res = https_conn.getresponse()
@@ -62,8 +66,8 @@ def map_data_to_database_model(symbols, time_series):
 
 def store_data():
     database_conn = psycopg2.connect(
-        host='localhost',
-        database='stocks_data_analysis',
+        host=config('DATABASE_HOST'),
+        database=config('DATABASE_NAME'),
         user=config('DATABASE_USER'),
         password=config('DATABASE_PASSWORD')
     )
@@ -80,8 +84,3 @@ def store_data():
         insert = 'insert into historical_stocks ({0}) values ({1})'.format(columns, values)
         cur.execute(cur.mogrify(insert, item), item)
     cur.close()
-
-    print("Done")
-
-
-store_data()
