@@ -5,7 +5,7 @@ import json
 
 
 def get_api_uri(stock):
-    return '/query?function=TIME_SERIES_DAILY&symbol=' + stock + '&datatype=json'
+    return f"/query?function=TIME_SERIES_DAILY&symbol={stock}&datatype=json"
 
 
 def load_stocks_data():
