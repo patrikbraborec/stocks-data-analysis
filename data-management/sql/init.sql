@@ -16,5 +16,7 @@ CREATE TABLE IF NOT EXISTS stocks_technical_analysis (
     id serial,
     symbol varchar not null,
     date date not null,
-    sma5 decimal not null
+    sma30 decimal not null,
+    ema30 decimal not null,
+    cma decimal not null
 );

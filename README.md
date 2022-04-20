@@ -8,4 +8,4 @@ The project is currently developed on macOS system with Python 3.9 installed via
 
 # Disclaimer
 
-The whole project is not intended to be any investment advice! Please, do your own research and invest only the money you can lose.
+The whole project is not intended to be investment advice! Please, do your own research and invest only the money you can lose.
